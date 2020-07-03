@@ -40,7 +40,7 @@ var Main = /** @class */ (function () {
         this.roleLayer.addChild(this.hero);
         //监听MOUSE_DOWN
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);
-        //Laya.stage.on(Laya.Event.MOUSE_UP, this, this.onMouseUp);
+        Laya.stage.on(Laya.Event.MOUSE_UP, this, this.onMouseUp);
         //模拟游戏结束，设置时间延迟
         Laya.timer.once(30000, this, this.gameOver);
         Laya.timer.frameLoop(1, this, this.loop);
@@ -63,9 +63,40 @@ var Main = /** @class */ (function () {
         //重新开始事件监听
         this.over.on("restart", this, this.gameInit);
     };
+    //创建敌机方法
+    Main.prototype.createEnemy = function (index, hp, speed, num) {
+        for (var i = 0; i < num; i++) {
+            //对象池
+            var enemy = Laya.Pool.getItemByClass("role", Role);
+            enemy.init("enemy" + (index + 1), hp, speed);
+            enemy.visible = true;
+            //随机位置
+            enemy.pos(Math.random() * (720 - 80) + 50, -Math.random() * 100);
+            //添加到舞台上
+            this.roleLayer.addChild(enemy);
+        }
+    };
+    //使用鼠标移动侦听，会出现移动一点点距离飞机就飞到屏幕之外的情况，原因未明，可改用拖动
+    /*
+    private onMouseDown(): void {
+        let dragRegion = new Laya.Rectangle(0, 0, 720, 1280);
+        //鼠标按下开始拖拽
+        this.hero.startDrag(dragRegion,true,100);
+    }*/
     Main.prototype.onMouseDown = function () {
-        var dragRegion = new Laya.Rectangle(0, 0, 720, 1280);
-        this.hero.startDrag(dragRegion, true, 100);
+        this.moveX = Laya.stage.mouseX;
+        this.moveY = Laya.stage.mouseY;
+        //监听MOUSE_MOVE
+        Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onMouseMove);
+    };
+    Main.prototype.onMouseMove = function () {
+        var xx = this.moveX - Laya.stage.mouseX;
+        var yy = this.moveY - Laya.stage.mouseY;
+        this.hero.x -= xx;
+        this.hero.y -= yy;
+    };
+    Main.prototype.onMouseUp = function () {
+        Laya.stage.off(Laya.Event.MOUSE_MOVE, this, this.onMouseMove);
     };
     return Main;
 }());
