@@ -162,7 +162,7 @@
                             }]
                     }
                 }],
-            "name":"hero_down",
+            "name":"hero_die",
             "id":2,
             "frameRate":12,
             "action":0
@@ -259,7 +259,7 @@
                             }]
                     }
                 }],
-            "name":"enemy3_down",
+            "name":"enemy3_die",
             "id":3,
             "frameRate":12,
             "action":0
@@ -340,7 +340,7 @@
                             }]
                     }
                 }],
-            "name":"enemy2_down",
+            "name":"enemy2_die",
             "id":4,
             "frameRate":12,
             "action":0
@@ -421,7 +421,7 @@
                             }]
                     }
                 }],
-            "name":"enemy1_down",
+            "name":"enemy1_die",
             "id":5,
             "frameRate":12,
             "action":0
@@ -771,7 +771,7 @@
                             }]
                     }
                 }],
-            "name":"bomb_supply",
+            "name":"bomb2_fly",
             "id":12,
             "frameRate":12,
             "action":0
@@ -828,7 +828,7 @@
                             }]
                     }
                 }],
-            "name":"bullet_supply",
+            "name":"bomb1_fly",
             "id":13,
             "frameRate":12,
             "action":0
@@ -885,7 +885,7 @@
                             }]
                     }
                 }],
-            "name":"bullet1",
+            "name":"bullet1_fly",
             "id":14,
             "frameRate":12,
             "action":0
@@ -942,7 +942,7 @@
                             }]
                     }
                 }],
-            "name":"bullet2",
+            "name":"bullet2_fly",
             "id":15,
             "frameRate":12,
             "action":0

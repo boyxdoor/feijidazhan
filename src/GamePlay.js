@@ -28,6 +28,9 @@ var GamePlay = /** @class */ (function (_super) {
         this.pauseBox.visible = false;
         Laya.timer.scale = 1;
     };
+    /**
+     * 更新游戏数值
+     */
     GamePlay.prototype.update = function (hp, level, score) {
         this.hp.text = hp.toString();
         this.level.text = level.toString();

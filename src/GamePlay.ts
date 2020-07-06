@@ -13,6 +13,9 @@ class GamePlay extends ui.GamePlayUI {
         this.pauseBox.visible = false;
         Laya.timer.scale = 1;
     }
+    /**
+     * 更新游戏数值
+     */
     update(hp:number,level:number,score:number):void
     {
         this.hp.text = hp.toString();
